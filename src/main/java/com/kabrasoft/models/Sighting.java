@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 @NoArgsConstructor
-public class Location extends BaseModel{
+public class Sighting extends BaseModel{
     private int animalId;
     private String location;
     private String timestamp;
