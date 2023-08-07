@@ -7,9 +7,8 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Animal {
-    private int id;
-    private String type;
+public class Animal extends BaseModel {
+    private int animalTypeId;
     private String name;
     private String health;
     private String age;
