@@ -8,4 +8,5 @@ import java.time.Instant;
 public abstract class BaseModel {
     private int id;
     private Instant dateAdded;
+    private Instant dateUpdated;
 }
