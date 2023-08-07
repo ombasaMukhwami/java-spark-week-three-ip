@@ -3,8 +3,8 @@
 ## author name
  - Ombasa Geoffrey Mukhwami
 ## description of project
- - This is a project to showcase the consepts learnt in java spark  week two of the course
- - The aim of the project is to build an app that allows wild life tracking
+ - This is a project to showcase the consepts learnt in java spark  week three of the course
+ - The aim of the project is to build an app that allows wild life tracking.
 
 ## project setup instructions
  - Clone the link and open in
