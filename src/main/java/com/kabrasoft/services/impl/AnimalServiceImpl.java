@@ -5,6 +5,8 @@ import com.kabrasoft.services.AnimalService;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
+import java.util.List;
+
 public class AnimalServiceImpl implements AnimalService {
     private  Connection connection;
 
@@ -41,5 +43,24 @@ public class AnimalServiceImpl implements AnimalService {
             System.out.println(exception.getMessage());
             return  null;
         }
+    }
+
+    @Override
+    public List<Animal> findAll() {
+        return null;
+    }
+
+    @Override
+    public boolean delete(int id) {
+        try {
+            String query = "DELETE FROM animals WHERE id = :id;";
+            connection.createQuery(query)
+                    .addParameter("id", id)
+                    .executeUpdate();
+            return true;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+        return false;
     }
 }

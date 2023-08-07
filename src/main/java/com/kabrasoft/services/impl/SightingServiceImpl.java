@@ -5,6 +5,8 @@ import com.kabrasoft.services.SightingService;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
+import java.util.List;
+
 public class SightingServiceImpl implements SightingService {
     private  Connection connection;
 
@@ -25,5 +27,26 @@ public class SightingServiceImpl implements SightingService {
             System.out.println(exception.getMessage());
             return false;
         }
+    }
+
+    @Override
+    public List<Sighting> findAll() {
+        return null;
+    }
+
+    @Override
+    public boolean delete(int id) {
+
+        try {
+            String query = "DELETE FROM sightings WHERE id = :id;";
+            connection.createQuery(query)
+                    .addParameter("id", id)
+                    .executeUpdate();
+
+            return true;
+        } catch (Exception e) {
+
+        }
+        return false;
     }
 }
