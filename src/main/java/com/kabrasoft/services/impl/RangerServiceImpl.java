@@ -61,6 +61,15 @@ public class RangerServiceImpl implements RangerService {
 
     @Override
     public boolean delete(int id) {
+        try {
+            String query = "DELETE FROM rangers WHERE id = :id;";
+            connection.createQuery(query)
+                    .addParameter("id", id)
+                    .executeUpdate();
+            return true;
+        } catch (Exception e) {
+            log.error(e.getMessage());
+        }
         return false;
     }
 }
