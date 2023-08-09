@@ -2,11 +2,13 @@ package com.kabrasoft.services.impl;
 
 import com.kabrasoft.models.Sighting;
 import com.kabrasoft.services.SightingService;
+import lombok.extern.slf4j.Slf4j;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 
 import java.util.List;
 
+@Slf4j
 public class SightingServiceImpl implements SightingService {
     private  Connection connection;
 
@@ -24,7 +26,7 @@ public class SightingServiceImpl implements SightingService {
                     .executeUpdate();
             return true;
         } catch (Exception exception) {
-            System.out.println(exception.getMessage());
+            log.error(exception.getMessage());
             return false;
         }
     }
@@ -45,7 +47,7 @@ public class SightingServiceImpl implements SightingService {
 
             return true;
         } catch (Exception e) {
-
+            log.error(e.getMessage());
         }
         return false;
     }

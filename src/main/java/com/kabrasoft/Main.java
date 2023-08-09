@@ -3,10 +3,13 @@ package com.kabrasoft;
 import com.kabrasoft.configs.DbConfig;
 import com.kabrasoft.constants.Species;
 import com.kabrasoft.models.Animal;
+import com.kabrasoft.models.Ranger;
 import com.kabrasoft.models.Sighting;
 import com.kabrasoft.services.AnimalService;
+import com.kabrasoft.services.RangerService;
 import com.kabrasoft.services.SightingService;
 import com.kabrasoft.services.impl.AnimalServiceImpl;
+import com.kabrasoft.services.impl.RangerServiceImpl;
 import com.kabrasoft.services.impl.SightingServiceImpl;
 import com.kabrasoft.utils.Helper;
 import org.sql2o.Sql2o;
@@ -24,6 +27,7 @@ public class Main {
         Sql2o sql2o = DbConfig.getDatabaseProduction();
         AnimalService animalService = new AnimalServiceImpl(sql2o);
         SightingService sightingService = new SightingServiceImpl(sql2o);
+        RangerService rangerService = new RangerServiceImpl(sql2o);
         get("/", (req, res) -> {
             return Helper.render(new HashMap<>(), "index.hbs");
         });
@@ -37,16 +41,16 @@ public class Main {
         post("/create-sighting", (req, res) -> {
             String id = req.queryParams("id");
             String location = req.queryParams("location");
-            String rangerName = req.queryParams("rangername");
+            Integer ranger = Integer.parseInt(req.queryParams("range_id"));
 
             try {
                 if (id == null || id.length() == 0
-                        || location == null || location.length() == 0 || rangerName == null || rangerName.length() == 0) {
+                        || location == null || location.length() == 0 || ranger == null) {
                     throw new IllegalArgumentException("invalid input all fields have to be provided");
                 }
                 int latestId = Integer.valueOf(id);
                 Animal animal = animalService.findAnimalById(latestId);
-                Sighting sightings = new Sighting(animal.getId(), location, rangerName);
+                Sighting sightings = new Sighting(animal.getId(), location, ranger);
 
                 //save sighting
                 sightingService.createSighting(sightings);
