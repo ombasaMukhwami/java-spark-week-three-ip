@@ -1,6 +1,7 @@
 package com.kabrasoft;
 
 import com.kabrasoft.configs.DbConfig;
+import com.kabrasoft.constants.Species;
 import com.kabrasoft.models.Animal;
 import com.kabrasoft.models.Sighting;
 import com.kabrasoft.services.AnimalService;
@@ -60,13 +61,13 @@ public class Main {
         });
 
         post("/create-animal", (req, res) -> {
-            Integer category = Integer.parseInt(req.queryParams("category"));
+            Species category = Helper.getSpecies(req.queryParams("category"));
             String name = req.queryParams("name");
             String health = req.queryParams("health");
             String age = req.queryParams("age");
 
             try {
-                if (category == null || name == null || name.length() == 0 || health == null || health.length() == 0 || age == null || age.length() == 0) {
+                if (name.length() == 0 || health == null || health.length() == 0 || age == null || age.length() == 0) {
                     System.out.print(category);
                     System.out.print(name);
                     System.out.print(health);

@@ -1,5 +1,6 @@
 package com.kabrasoft.models;
 
+import com.kabrasoft.constants.Species;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -8,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Animal extends BaseModel {
-    private int animalTypeId;
+    private Species species;
     private String name;
     private String health;
     private String age;

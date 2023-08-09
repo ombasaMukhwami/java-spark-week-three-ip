@@ -18,7 +18,7 @@ public class AnimalServiceImpl implements AnimalService {
         try {
             String query = "INSERT INTO animals ( type ,name, health, age) VALUES (:type,:name, :health, :age);";
             connection.createQuery(query)
-                    .addParameter("type", animals.getAnimalTypeId())
+                    .addParameter("type", animals.getSpecies())
                     .addParameter("name", animals.getName())
                     .addParameter("health",animals.getHealth())
                     .addParameter("age",animals.getAge())

@@ -9,4 +9,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class Ranger extends BaseModel{
     private String name;
+    private String badgeNo;
+    private String address;
 }

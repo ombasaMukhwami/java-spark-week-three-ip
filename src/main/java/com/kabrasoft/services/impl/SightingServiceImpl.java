@@ -16,11 +16,11 @@ public class SightingServiceImpl implements SightingService {
 
     public boolean  createSighting(Sighting sightings) {
         try {
-            String query = "INSERT INTO sightings ( animal_id ,location, ranger_name) VALUES (:animalId,:location, :rangerName);";
+            String query = "INSERT INTO sightings ( animal_id ,location, ranger_id) VALUES (:animalId,:location, :rangerId);";
             connection.createQuery(query)
                     .addParameter("animalId", sightings.getAnimalId())
                     .addParameter("location", sightings.getLocation())
-                    .addParameter("rangerName",sightings.getRangerName())
+                    .addParameter("rangerId",sightings.getRangerId())
                     .executeUpdate();
             return true;
         } catch (Exception exception) {

@@ -11,5 +11,5 @@ import lombok.NoArgsConstructor;
 public class Sighting extends BaseModel{
     private int animalId;
     private String location;
-    private String rangerName;
+    private int rangerId;
 }
